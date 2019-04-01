@@ -30,6 +30,17 @@ public class TwoSum {
 
 }
 {% endcodeblock %}
+#### Test by JUnit5
+{% codeblock lang:java %}
+@Test
+public void twoSumTest() throws Exception {
+    int target = 6;
+    int[] numbers = {1, 2, 3, 4};
+    int[] result;
+    result = TwoSum.runTwoSum(numbers, target);
+    assertTrue(numbers[result[0]] + numbers[result[1]] == target);
+}
+{% endcodeblock %}
 
 #### C++
 {% codeblock lang:cpp %}
@@ -49,3 +60,24 @@ vector<int32_t> TwoSum::runTwoSum(vector<int32_t>& numbers, int target) {
     throw invalid_argument("No Solution");
 }
 {% endcodeblock %}
+
+#### Test by Catch2
+{% codeblock lang:cpp %}
+TEST_CASE ("TwoSum Test") {
+    TwoSum twosum;
+    vector<int32_t> numbers{1,2,3,4};
+    int32_t target = 6;
+    vector<int32_t> answer{1,3};
+    vector<int32_t> result;
+    result = twosum.runTwoSum(numbers, target);
+    std::sort(result.begin(), result.end());
+    REQUIRE(result == answer);
+}
+{% endcodeblock %}
+
+不得不說真的有點意思
+尤其是Catch2 跟JUnit5的部分
+未來也許會用Mockitoi? blog上面更好讀
+下一個更新應該會用 gradle&cmake把code包好 and gitgub release
+下下個更新應該是 Python + Javascript(NodeJs)
+下下下個更新應該是 Kotlin + Dart ??? not sure
